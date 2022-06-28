@@ -2,8 +2,10 @@
 #
 # The working dir... output will be in the results subfolder of the workdir
 workdir: "WORKDIR"
+pipelinedir: "PIPELINE_HOME"
 #
 # tab delimited samples file ... should have the following 3 columns
 # sampleName	path_to_R1_fastq	path_to_R2_fastq
 #
 samples: "WORKDIR/samples.tsv"
+fastqpath: "FASTQPATH"

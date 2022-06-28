@@ -1,0 +1,21 @@
+from os.path import join
+from os import listdir
+import os
+import re
+
+
+
+samples = [f for f in os.listdir(config['fastqpath']) if re.search('_R1.fastq.gz', f)]
+samples = [re.sub("_R1.fastq.gz", "", x) for x in samples]
+print(samples)
+
+workpath=config['workdir']
+fastqdir=config['fastqpath']
+
+rule all:
+	input:
+		expand(join(workpath,"fastqc","{name}_R1_fastqc.html"),name=samples)	
+
+
+##
+include: join(config['pipelinedir'],"workflow","rules","fastqc.smk")
