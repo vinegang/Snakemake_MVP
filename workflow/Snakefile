@@ -16,8 +16,9 @@ fastqdir=config['fastqpath']
 rule all:
 	input:
 		expand(join(workpath,"fastqc","{name}_R1_fastqc.html"),name=samples),	
-		expand(join(workpath,"star_out","{name}.star.bam"),name=samples)
-
+		expand(join(workpath,"star_out","{name}.star.bam"),name=samples),
+		expand(join(workpath,"rsem_out","{name}.genes.results"),name=samples),
 ##
 include: join(config['pipelinedir'],"workflow","rules","fastqc.smk")
 include: join(config['pipelinedir'],"workflow","rules","star.smk")
+include: join(config['pipelinedir'],"workflow","rules","rsem.smk")
